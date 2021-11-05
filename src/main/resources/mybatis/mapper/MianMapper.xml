@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.pcria.mapper.MainMapper">
+    <select id="selFoodList" parameterType="FoodVO" resultType="FoodVO">
+        SELECT seq, i_f, f_price, f_pic, f_name
+        FROM t_food
+        <if test="chk != 8">
+            WHERE i_f = #{chk}
+        </if>
+    </select>
+
+    <select id="selPopularFoodList" parameterType="FoodVO" resultType="FoodVO">
+        SELECT A.seq, B.i_f, B.f_price, B.f_pic, B.f_name
+        FROM user_food A
+                 INNER JOIN t_food B
+                            ON A.seq = B.seq
+        GROUP BY A.seq
+        ORDER BY SUM(A.total_quantity) DESC LIMIT 10
+    </select>
+
+    <select id="selSeat" resultType="SeatDMI">
+        SELECT A.s_no, A.s_val, B.u_no, B.s_occupied, C.u_time
+        FROM s_code_d A
+                 LEFT JOIN t_seat B
+                           ON A.s_no = B.s_no
+                 LEFT JOIN t_user C
+                           ON B.u_no = C.u_no
+        ORDER BY A.s_no ASC
+    </select>
+
+    <insert id="insSeat" parameterType="SeatDMI">
+        INSERT INTO t_seat (u_no, s_no, s_occupied)
+        VALUES
+            (#{u_no}, #{s_no}, #{s_occupied})
+    </insert>
+
+    <update id="updSeat" parameterType="SeatDMI">
+        UPDATE t_seat
+        SET s_no = #{s_no}
+        WHERE u_no = #{u_no}
+          AND s_occupied = #{s_occupied}
+    </update>
+
+    <delete id="delSeat" parameterType="AccessVO">
+        DELETE FROM t_seat
+        WHERE
+            u_no = #{u_no} AND
+            s_no = #{s_no} AND
+            s_occupied = #{s_occupied}
+    </delete>
+
+    <select id="selLoginUserSeat" resultType="AccessVO">
+        SELECT u_no, s_no, s_occupied
+        FROM t_seat
+        WHERE u_no = #{u_no}
+    </select>
+
+    <update id="updProfile" parameterType="AccessVO">
+        UPDATE t_user
+        SET
+        u_name = #{u_name}
+        , u_birth = #{u_birth}
+        , m_dt = now()
+        <if test='u_profile != null'>
+            , u_profile = #{u_profile}
+        </if>
+        <if test="salt != null">
+            , salt = #{salt}
+            , u_password = #{u_password}
+        </if>
+        WHERE u_no = #{u_no}
+    </update>
+
+    <!-- 프로필 기타 정보 가져오기 -->
+    <select id="ajaxSelMyInfo" resultType="AccessVO">
+        SELECT r_dt, m_dt, u_totalPayment, u_totalTime
+        FROM t_user
+        WHERE u_no = #{u_no}
+    </select>
+    <select id="ajaxSelMyOrderList" resultType="FoodVO">
+        select A.seq, A.total_quantity, B.f_price, B.f_name
+        from user_food A
+                 INNER JOIN t_food B
+                            ON A.seq = B.seq
+        WHERE A.u_no = #{u_no}
+        ORDER BY (total_quantity * f_price) DESC
+    </select>
+</mapper>

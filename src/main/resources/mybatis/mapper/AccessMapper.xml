@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.pcria.mapper.AccessMapper">
+    <select id="selUser" parameterType="AccessVO" resultType="AccessVO">
+        SELECT u_no, u_id, u_password, salt, u_name, u_wallet, u_birth, u_time, u_profile
+        FROM t_user
+        WHERE <if test="u_no > 0">u_no = #{u_no}</if>
+        <if test="u_id != null and u_id !=''">u_id = #{u_id}</if>
+    </select>
+
+    <insert id="insUser" parameterType="AccessVO">
+        INSERT INTO t_user
+            (u_id, u_password, u_name, u_birth, salt)
+        VALUES
+            (#{u_id}, #{u_password}, #{u_name}, #{u_birth}, #{salt})
+    </insert>
+</mapper>

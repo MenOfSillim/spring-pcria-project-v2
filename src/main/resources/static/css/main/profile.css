@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+#section {
+    height: 100%;
+    width: 100%;
+    background-color: #F8F8F8;
+}
+@media screen and (max-width: 1200px){
+    #section{
+        width: 1200px;
+    }
+}
+#allContainer {
+    width: 1200px;
+    height: 100%;
+    margin : 0 auto;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+}
+#profileContainer{
+    width: 1200px;
+}
+#allContainer h1 {
+    margin: 40px auto;
+    margin-bottom: 30px;
+}
+#allContainer #leftContainer{
+    display: inline-block;
+    width: 500px;
+    height: 645px;
+    position: absolute;
+    left: 30px;
+}
+#allContainer #rightContainer{
+    display: inline-block;
+    width: 660px;
+    height: 645px;
+    position: absolute;
+    right: 0;
+}
+#allContainer .frmContainer {
+    margin: 20px auto;
+    margin-bottom :10px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#allContainer .profileImg {
+    width: 240px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+#allContainer .name {
+    color: gray;
+    font-weight: gray;
+    font-weight: bold;
+    width: 120px;
+    display: inline-block;
+    text-align: left;
+}
+
+#allContainer .updList {
+    width: 250px;
+    height: 41px;
+    background: #FFFFFF;
+    padding-left: 30px;
+    padding-right: 20px;
+    border: 1px solid #4FA2C7;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 5px auto;
+}
+
+#allContainer .updList[type="search"] {
+    font-family: 'GmarketSansMedium', serif;
+    line-height: normal;
+    padding-top: 6px;
+}
+
+#allContainer .updList:hover {
+    cursor: pointer;
+}
+
+#allContainer .imgFile[type="file"] {
+    font-family: 'GmarketSansMedium', serif;
+    width: 254px;
+    height: 30px;
+    text-align: center;
+    margin: 5px auto;
+}
+
+#allContainer input[type="submit"] {
+    font-family: 'GmarketSansMedium', serif;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: lightgray;
+}
+
+#allContainer .box-file-input label {
+    font-family: 'GmarketSansMedium', serif;
+    display: inline-block;
+    background: #4FA2C7
+}
+
+#allContainer #btnBox {
+    margin: 30px auto;
+    margin-top: 15px;
+}
+
+#allContainer #frmBtn {
+    font-size: 1.05em;
+}
+
+#allContainer #frmBtn:hover {
+    cursor: pointer;
+    background-color: goldenrod;
+}
+#allContainer #rightContainer h3{
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#allContainer #rightContainer #leftInfo{
+    display: inline-block;
+    width: 300px;
+}
+#allContainer #rightContainer #rightInfo{
+    display: inline-block;
+    width: 300px;
+}
+#allContainer #rightContainer .updList{
+    text-align: center;
+}
+#allContainer #rightContainer #myOrderList{
+    width: 556px;
+    height: 360px;
+    background: #FFFFFF;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #4FA2C7;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 5px auto;
+    overflow: auto;
+}
+#allContainer #rightContainer #myOrderList div span{
+
+}
+#allContainer #rightContainer #myOrderList .myOrderContainer{
+    position: relative;
+    height: 40px;
+    padding: 8px;
+    border-bottom: 1px solid lightgray;
+}
+#allContainer #rightContainer #myOrderList .myOrderContainer span{
+    position: absolute;
+    font-size: 1.2em;
+}
+.myOrderContainer span:nth-child(1){
+    left: 30px;
+    top: 21px;
+}
+.myOrderContainer span:nth-child(2){
+    right: 200px;
+    top: 20px;
+}
+.myOrderContainer span:nth-child(3){
+    right: 30px;
+    top: 20px;
+}
+#allContainer #rightContainer #myOrderList::-webkit-scrollbar {
+    width: 8px;
+    height: 100%;
+}
+#allContainer #rightContainer #myOrderList::-webkit-scrollbar-thumb{
+    background-color: #4FA2C7;
+    border-radius: 10px;
+}
+#allContainer #rightContainer #myOrderList::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}

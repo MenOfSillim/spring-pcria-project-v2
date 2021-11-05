@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+#allContainer {
+    height: 100%;
+    margin: 0 auto;
+}
+#allContainer h1{
+    text-align: center;
+    margin: 50px auto;
+}
+#memberContainer{
+    text-align: center;
+}
+#memberContainer label{
+    line-height: 10px;
+}
+.lbl:nth-child(2) {
+    margin-left: 10px;
+}
+select{
+    padding: 5px;
+}
+
+#seatsContainer {
+    margin-top: 10px;
+}
+
+#coin_btn {
+    border: none;
+    background-color: #d5e5f4;
+    border-radius: 5px;
+    color: black;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    outline: 0px;
+    font-size: 1.2em;
+}
+
+.btn_list {
+    margin: 3px;
+    background-color: #4B89DC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 230px;
+    height: 100px;
+    font-size: 1.4em;
+    text-align: center;
+    outline: 0px;
+}
+.btn_list:hover {
+    background-color: goldenrod;
+}
+.btn_sel {
+    margin: 3px;
+    background-color: #a2cba1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 230px;
+    height: 100px;
+    font-size: 1.4em;
+    text-align: center;
+    outline: 0px;
+}
+span {
+    margin-top:3px;
+    margin-right: 10px;
+    color: black;
+    font-size: 1.4em;
+}
+
+#open {
+    margin: 20px;
+    padding: 10px;
+    width: 400px;
+    font-size: 2em;
+    cursor: pointer;
+    text-align: center;
+    background-color: #d5e5f4;
+    border-radius: 5px;
+}

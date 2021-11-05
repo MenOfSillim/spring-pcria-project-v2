@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.pcria.mapper.CountingMapper">
+    <select id="selFood" parameterType="CountingDMI" resultType="CountingDMI">
+        SELECT total_quantity
+        FROM user_food
+        WHERE u_no = #{u_no} AND seq = #{seq}
+    </select>
+
+    <update id="updTime" parameterType="CountingVO">
+        UPDATE t_user
+        SET
+            u_wallet = u_wallet - #{u_wallet},
+            u_time = u_time + #{u_time},
+            u_totalTime = u_totalTime + #{u_time}
+        WHERE u_no = #{u_no}
+    </update>
+
+    <update id="discTime" parameterType="CountingVO">
+        UPDATE t_user
+        SET u_time = u_time - #{u_time}
+        WHERE u_no = #{u_no}
+    </update>
+
+    <update id="updWallet" parameterType="CountingVO">
+        UPDATE t_user
+        SET u_wallet = u_wallet + #{u_wallet}
+        WHERE u_no = #{u_no}
+    </update>
+
+    <update id="payFood" parameterType="CountingDMI">
+        UPDATE t_user
+        SET u_time = u_time - #{payTime}, u_totalPayment = u_totalPayment + #{totalPayment}
+        WHERE u_no = #{u_no}
+    </update>
+
+    <update id="addFood" parameterType="CountingDMI">
+        UPDATE user_food
+        SET total_quantity = total_quantity + #{total_quantity}
+        WHERE u_no = #{u_no} AND seq = #{seq}
+    </update>
+
+    <insert id="newFood" parameterType="CountingDMI">
+        INSERT INTO user_food (u_no, seq, total_quantity)
+        VALUES (#{u_no}, #{seq}, #{total_quantity})
+    </insert>
+</mapper>
