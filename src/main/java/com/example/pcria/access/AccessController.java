@@ -50,14 +50,10 @@ public class AccessController {
             AccessVO vo = main_service.selLoginUserSeat(param.getU_no());
             if(vo != null) {
                 param.setS_no(vo.getS_no());
-                System.out.println("좌석 : "+vo.getS_no());
                 param.setS_occupied(vo.getS_occupied());
-                System.out.println("좌석 사용 여부 : "+vo.getS_occupied());
             }
             hs.setAttribute(Const.LOGIN_USER, param);
-            System.out.println(param.getU_profile());
             AccessVO loginUser = SecurityUtils.getLoginUser(hs);
-            System.out.println("잔여 시간 : " + loginUser.getU_time());
             return "redirect:/main/seat";
         }
         String msg = null;
@@ -84,9 +80,7 @@ public class AccessController {
 
     @RequestMapping(value="/ajaxIdChk", method = RequestMethod.POST)
     public @ResponseBody String ajaxIdChk(@RequestBody AccessVO param) {
-        System.out.println("u_id : " + param.getU_id());
         int result = service.login(param);
-        System.out.println("result : " + result);
         return String.valueOf(result); // 값 자체를 응답
     }
 }
