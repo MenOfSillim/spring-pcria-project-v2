@@ -6,6 +6,7 @@ import com.example.pcria.domain.AccessVO;
 import com.example.pcria.domain.FoodVO;
 import com.example.pcria.domain.SeatDMI;
 import com.example.pcria.mapper.MainMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class MainService {
 
@@ -68,10 +70,19 @@ public class MainService {
         AccessVO loginUser = SecurityUtils.getLoginUser(hs);
         param.setU_no(loginUser.getU_no());
 
-        MultipartFile file = mreq.getFile("profile_img");
-        String savePath = mreq.getServletContext().getRealPath("resources")
-                + "/img/u_profile/user/" + loginUser.getU_no() + "/";
-        String originFileNm = file.getOriginalFilename();
+        MultipartFile multipartFile = mreq.getFile("profile_img");
+        String originFileNm = multipartFile.getOriginalFilename();
+
+        String savePath = mreq.getServletContext().getRealPath("resources") + "/img/u_profile/user/" + loginUser.getU_no() + "/";
+        log.info(">> webapp :: {}", savePath);
+        String absolutePath = new File("src/main/resources/static/img/u_profile/user/" + loginUser.getU_no()).getAbsolutePath();
+
+        File file = new File(absolutePath);
+
+        if (!file.exists()) {
+            boolean wasSuccessful = file.mkdirs();
+            if (!wasSuccessful) log.error(">> file : was not successful");
+        }
 
         if (!param.getU_password().equals("")) {
             String salt = SecurityUtils.generateSalt();
@@ -79,20 +90,22 @@ public class MainService {
             param.setU_password(cryptPw);
             param.setSalt(salt);
         }
+
         if (originFileNm.trim() != null && originFileNm.trim() != "") {
-            File prev_file = new File(savePath + loginUser.getU_profile());
+            File prev_file = new File(absolutePath + "/" + loginUser.getU_profile());
             if (prev_file.exists()) prev_file.delete();
             String ext = FileUtils.getExt(originFileNm);
             String saveFileNm = UUID.randomUUID() + ext;
             try {
-                file.transferTo(new File(savePath + saveFileNm));
+                multipartFile.transferTo(new File(absolutePath + "/" + saveFileNm));
                 param.setU_profile(saveFileNm);
                 loginUser.setU_profile(param.getU_profile());
+                log.info(">> 파일 등록 성공 :: {}", saveFileNm);
             } catch (Exception e) {
-                System.out.println("파일 등록 실패");
+                log.error("파일 등록 실패");
             }
         }
-        int result = 0;
+        int result;
         result = mapper.updProfile(param);
         loginUser.setU_birth(param.getU_birth());
         loginUser.setU_name(param.getU_name());

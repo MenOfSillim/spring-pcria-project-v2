@@ -28,8 +28,9 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java:8.0.25'
     // mybatis
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
-
-
+    // file 처리
+    implementation 'commons-io:commons-io:2.8.0'
+    implementation 'commons-fileupload:commons-fileupload:1.4'
 }
 
 test {
