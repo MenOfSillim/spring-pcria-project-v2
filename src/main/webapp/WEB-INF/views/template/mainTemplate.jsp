@@ -18,7 +18,7 @@
             <div id="header" class="container">
                 <div id="logo">
                     <a href="/main/seat">
-                        <img alt="logo" src="/img/login/PCria_logo.png">
+                        <img id="main-logo" alt="logo" src="/img/login/PCria_logo.png">
                     </a>
                 </div>
                 <div id="menu">
