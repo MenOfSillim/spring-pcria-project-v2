@@ -100,7 +100,7 @@
                 let total_price = document.createElement('span')
                 let temp = listArr[i].f_price * listArr[i].total_quantity
                 payment += temp
-                total_price.innerText = numberWithCommas(temp)+'개'
+                total_price.innerText = numberWithCommas(temp)+'원'
                 div_con.append(total_price)
             }
             console.log(numberWithCommas(payment)+'원')
