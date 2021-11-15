@@ -21,3 +21,4 @@ server:
     jsp:
       init-parameters:
         development: true
+  port: 8080
