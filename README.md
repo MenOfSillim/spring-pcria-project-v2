@@ -13,3 +13,7 @@ pcria 레거시 개선 프로젝트
 
 1. LoginCheckInterceptor 기능
 2. 프로필 사진 변경 후 새로 빌드하지 않으면 이미지 변경되지 않음
+
+# 배포
+
+- Heroku
