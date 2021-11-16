@@ -54,6 +54,12 @@ $ heroku git:remote -a pcria
 $ git push heroku master
 # heroku 클라이언트 설정
 $ heroku ps:scale web=1
+# 접속 확인
+$ heroku open
 # log 확인
 $ heroku logs --tail
 ```
+
+### Heroku url
+
+https://pcria.herokuapp.com/
