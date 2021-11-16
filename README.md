@@ -16,6 +16,8 @@ pcria 레거시 개선 프로젝트
 
 # Build
 
+빌드는 Heroku 원격 저장소에 올리기 전에 만들어 준다.
+
 ```shell
 $ ./gradlew build
 ```
@@ -39,7 +41,11 @@ server:
 
 ### Procfile
 
+프로젝트 root 경로에 확장자 없이 Procfile 생성.
+
 web: java -Dspring.server.port=8080 -Dspring.profiles.active=dev -jar target/pcria-0.0.1-SNAPSHOT.jar
+
+입력해줘야 8080 포트로 연결됨 -> Heroku 는 빌드할 때 마다 port 가 바뀌기 때문에 필요한 설정.
 
 ### Heroku CLI
 
@@ -63,3 +69,15 @@ $ heroku logs --tail
 ### Heroku url
 
 https://pcria.herokuapp.com/
+
+### Heroku 의 문제
+
+Heroku 는 30분 내에 트래픽이 발생하지 않으면 sleep 모드로 들어가 재접속시 긴 시간이 필요함.
+
+#### 해결
+
+1. 매 30분 핑 발사 [링크](http://kaffeine.herokuapp.com)
+2. linux 서버 crontab & curl 
+
+[crontab 사용법](https://jdm.kr/blog/2)
+[crontab 설정](https://m.blog.naver.com/writer0713/221507833658)
