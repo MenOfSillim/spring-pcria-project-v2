@@ -11,8 +11,16 @@ pcria 레거시 개선 프로젝트
 
 # 현재 문제점
 
-1. LoginCheckInterceptor 기능
+1. LoginCheckInterceptor 기능 - 사용 X
 2. 프로필 사진 변경 후 새로 빌드하지 않으면 이미지 변경되지 않음
+
+# Build
+
+```shell
+$ ./gradlew build
+```
+경로를 target 아래로 이동
+target/pcria-0.0.1-SNAPSHOT.jar
 
 # 배포
 
