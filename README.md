@@ -17,3 +17,35 @@ pcria 레거시 개선 프로젝트
 # 배포
 
 - Heroku
+
+## Heroku 설치 가이드
+
+### 회원가입
+
+> https://www.heroku.com/
+
+### yml 설정
+
+server:
+   port: ${port:8080}
+
+### Procfile
+
+web: java -Dspring.server.port=8080 -Dspring.profiles.active=dev -jar target/pcria-0.0.1-SNAPSHOT.jar
+
+### Heroku CLI
+
+```shell
+# heroku 설치
+$ brew install heroku/brew/heroku
+# heroku login
+$ heroku login
+# 원격 등록
+$ heroku git:remote -a pcria
+# heroku 저장소에 push
+$ git push heroku master
+# heroku 클라이언트 설정
+$ heroku ps:scale web=1
+# log 확인
+$ heroku logs --tail
+```
