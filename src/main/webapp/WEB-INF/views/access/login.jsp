@@ -11,34 +11,36 @@
 <body>
 <div id="container">
     <div class="wrap">
-        <div class="logo_img"><img alt="logo" src="/img/login/PCria_logo.png"></div>
         <div class="background"></div>
-        <div class="form-wrap">
-            <div class="button-wrap">
-                <div id="btn"></div>
-                <button type="button" class="togglebtn" onclick="login()">로그인</button>
-                <button type="button" class="togglebtn" onclick="register()">회원가입</button>
+        <div class="rightPartition">
+            <div class="logo_img"><img alt="logo" src="/img/login/PCria_logo.png"></div>
+            <div class="form-wrap">
+                <div class="button-wrap">
+                    <div id="btn"></div>
+                    <button type="button" class="togglebtn" onclick="login()">로그인</button>
+                    <button type="button" class="togglebtn" onclick="register()">회원가입</button>
+                </div>
+                <form action="/access/login" id="login" method="post" class="input-group">
+                    <div class="msg">${msg}</div>
+                    <input type="text" class="input-field" name="u_id" placeholder="아이디를 입력하세요" required>
+                    <input type="password" class="input-field" name="u_password" placeholder="비밀번호를 입력하세요" required>
+                    <input type='submit' value="로그인" class="submit">
+                </form>
+                <form action="/access/join" id="register" name="frm2" method="post" class="input-group register" onsubmit="return test_chk()">
+                    <div id="idChkResult" class="msg"></div>
+                    <div>
+                        <input type="text" class="input-field" name="u_id" id="u_id" placeholder="아이디를 입력하세요" required onkeyup="changeId()">
+                        <button type="button" onclick="chkId(u_id)">중복 확인</button>
+                        <input type="hidden" id="chk_value" name="chk_value">
+                    </div>
+                    <input type="password" class="input-field" name="u_password" placeholder="비밀번호를 입력하세요" required>
+                    <input type="text" class="input-field" name="u_name" placeholder="이름을 입력하세요" required>
+                    <input type="date" class="input-field" name="u_birth" required>
+                    <div id="registerBtn">
+                        <input type="submit" value="회원가입" class="submit">
+                    </div>
+                </form>
             </div>
-            <form action="/access/login" id="login" method="post" class="input-group">
-                <div class="msg">${msg}</div>
-                <input type="text" class="input-field" name="u_id" placeholder="아이디를 입력하세요" required>
-                <input type="password" class="input-field" name="u_password" placeholder="비밀번호를 입력하세요" required>
-                <input type='submit' value="로그인" class="submit">
-            </form>
-            <form action="/access/join" id="register" name="frm2" method="post" class="input-group register" onsubmit="return test_chk()">
-                <div id="idChkResult" class="msg"></div>
-                <div>
-                    <input type="text" class="input-field" name="u_id" id="u_id" placeholder="아이디를 입력하세요" required onkeyup="changeId()">
-                    <button type="button" onclick="chkId(u_id)">중복 확인</button>
-                    <input type="hidden" id="chk_value" name="chk_value">
-                </div>
-                <input type="password" class="input-field" name="u_password" placeholder="비밀번호를 입력하세요" required>
-                <input type="text" class="input-field" name="u_name" placeholder="이름을 입력하세요" required>
-                <input type="date" class="input-field" name="u_birth" required>
-                <div id="registerBtn">
-                    <input type="submit" value="회원가입" class="submit">
-                </div>
-            </form>
         </div>
     </div>
 </div>

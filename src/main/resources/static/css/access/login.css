@@ -7,7 +7,7 @@
 }
 .wrap {
     height: 824px;
-    width: 1400px;
+    /*width: 1400px;*/
     margin: 0 auto;
     position: relative;
 }
@@ -21,33 +21,42 @@
     width: 280px;
     height: 160px;
     position: absolute;
-    right: 56px;
+    right: 34%;
     top: 20px;
 }
 .logo_img img{
     width: 100%;
     height: 100%;
 }
-.background {
-    background-image: url(/img/login/login_background.gif);
-    background-repeat: round;
-    background-size: cover;
-    width: 900px;
-    height: 500px;
-    position: absolute;
-    bottom: 100px;
-}
 .form-wrap {
     width: 380px;
     height: 620px;
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: 28%;
+    top: 30%;
+    bottom: 0;
     margin: 0 auto;
     background-color:lightgray;
     padding: 5px;
     overflow: hidden;
     border-radius: 30px;
+}
+@media all and (min-width:1310px){
+    .background {
+        background-image: url(/img/login/login_background.gif);
+        background-repeat: round;
+        background-size: cover;
+        width: 900px;
+        height: 500px;
+        position: absolute;
+        bottom: 100px;
+    }
+    .logo_img {
+        right: 56px;
+    }
+    .form-wrap{
+        right: 1px;
+    }
 }
 .button-wrap {
     width: 230px;

@@ -8,6 +8,7 @@ pcria 레거시 개선 프로젝트
    - DB 에서 파일 이름 가져온 뒤 경로 찾기
 3. 짜파게티 이미지 경로 (농심 공식 홈페이지에서 가져옴)
 4. 프로필 유저 정보 - 사용시간 컬럼 오류로 인한 load 실패(컬럼형식 int -> date)
+5. 모바일 환경에서 로그인 페이지에 있는 background image 나오지 않고 가운데 정렬로 이루어 지도록 변경
 
 # 현재 문제점
 
@@ -34,7 +35,7 @@ target/pcria-0.0.1-SNAPSHOT.jar
 
 > https://www.heroku.com/
 
-### yml 설정
+### yml-dev 설정
 
 server:
    port: ${port:8080}
@@ -52,16 +53,22 @@ web: java -Dspring.server.port=8080 -Dspring.profiles.active=dev -jar target/pcr
 ```shell
 # heroku 설치
 $ brew install heroku/brew/heroku
+
 # heroku login
 $ heroku login
+
 # 원격 등록
 $ heroku git:remote -a pcria
+
 # heroku 저장소에 push
 $ git push heroku master
+
 # heroku 클라이언트 설정
 $ heroku ps:scale web=1
+
 # 접속 확인
 $ heroku open
+
 # log 확인
 $ heroku logs --tail
 ```
