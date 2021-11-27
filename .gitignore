@@ -11,7 +11,7 @@ Icon
 target
 
 ### YML ###
-*.yml
+#*.yml
 
 ### STS ###
 .apt_generated
