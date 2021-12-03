@@ -1,1 +1,1 @@
-web: java -Dspring.server.port=8080 -Dspring.profiles.active=dev -jar target/pcria-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=dev -jar build/libs/pcria-0.0.1-SNAPSHOT.jar

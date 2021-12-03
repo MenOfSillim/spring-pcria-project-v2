@@ -15,16 +15,6 @@ pcria 레거시 개선 프로젝트
 1. LoginCheckInterceptor 기능 - 사용 X
 2. 프로필 사진 변경 후 새로 빌드하지 않으면 이미지 변경되지 않음
 
-# Build
-
-빌드는 Heroku 원격 저장소에 올리기 전에 만들어 준다.
-
-```shell
-$ ./gradlew build
-```
-경로를 target 아래로 이동
-target/pcria-0.0.1-SNAPSHOT.jar
-
 # 배포
 
 - Heroku
@@ -35,18 +25,13 @@ target/pcria-0.0.1-SNAPSHOT.jar
 
 > https://www.heroku.com/
 
-### yml-dev 설정
-
-server:
-   port: ${port:8080}
-
 ### Procfile
 
 프로젝트 root 경로에 확장자 없이 Procfile 생성.
 
-web: java -Dspring.server.port=8080 -Dspring.profiles.active=dev -jar target/pcria-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=dev -jar build/libs/pcria-0.0.1-SNAPSHOT.jar
 
-입력해줘야 8080 포트로 연결됨 -> Heroku 는 빌드할 때 마다 port 가 바뀌기 때문에 필요한 설정.
+Heroku는 빌드할 때 마다 port 번호가 변하기 때문에 heroku port를 변수로 받아 실행할 수 있도록 명령어를 작성해준다.
 
 ### Heroku CLI
 
