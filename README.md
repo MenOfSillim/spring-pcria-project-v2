@@ -73,3 +73,14 @@ Heroku 는 30분 내에 트래픽이 발생하지 않으면 sleep 모드로 들�
 
 [crontab 사용법](https://jdm.kr/blog/2)
 [crontab 설정](https://m.blog.naver.com/writer0713/221507833658)
+
+# 도커
+
+## Dockerfile 생성
+
+- Spring boot & JSP 를 사용할 수 있는 이미지로 작성
+
+## docker-compose.yml 생성
+
+> mysql & pcria 를 도커 컨테이너로 띄운 뒤 연동 성공 <br>
+> mysql 정보를 로컬과 동기화 시키는 작업 성공
