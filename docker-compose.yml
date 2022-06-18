@@ -1,11 +1,11 @@
 version: '3'
 services:
   local-db:
-    image: library/mysql
+    image: rubok/mysql
     container_name: mysql
     restart: always
     ports:
-      - 3306:3306
+      - 33063:3306
     environment:
       - MYSQL_DATABASE=pcria
       - MYSQL_USER=rubok
@@ -14,15 +14,13 @@ services:
     volumes:
       - /Users/seokgyuhwan/vscode/dockerfile/mysql/mysql:/var/lib/mysql
       - /Users/seokgyuhwan/vscode/dockerfile/mysql/db/mysql/init:/docker-entrypoint-initdb.d
-    networks:
-      - test_network_02
-    platform: linux/x86_64
+    platform: linux/amd64
 
   application:
     build: .
     restart: always
     ports:
-      - 8080:8080
+      - 8000:8080
     depends_on:
       - local-db
     container_name: app_pcria
@@ -30,8 +28,4 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://local-db:3306/pcria?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: rubok
       SPRING_DATASOURCE_PASSWORD: master
-    networks:
-      - test_network_02
 
-networks:
-  test_network_02:

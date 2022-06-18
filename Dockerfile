@@ -10,4 +10,8 @@ FROM amazoncorretto:11
 VOLUME /tmp
 ARG JAR_FILE=build/libs/*.war
 COPY ${JAR_FILE} app.war
-ENTRYPOINT ["java","-Djava.security.egd=ee:/dev/./urandom","-jar","/app.war"]
+ENV	USE_PROFILE local
+
+#ENTRYPOINT ["java","-Djava.security.egd=ee:/dev/./urandom","-jar","/app.war"]
+
+ENTRYPOINT ["java","-Dspring.profiles.active=${USE_PROFILE}", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.war"]
