@@ -90,8 +90,10 @@ Heroku 는 30분 내에 트래픽이 발생하지 않으면 sleep 모드로 들�
 
 ## 도커
 
-> docker run --name pcria -p 30001:8080 -d --add-host=host.docker.internal:host-gateway -e USE_PROFILE=local --restart unless-stopped menofdocker/pcria
-> docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 33066:3306 -v /mnt/storage1/db-data/mysql:/var/lib/mysql --add-host=host.docker.internal:host-gateway --restart unless-stopped menofdocker/mysql
+```
+$ docker run --name pcria -p 30001:8080 -d --add-host=host.docker.internal:host-gateway -e USE_PROFILE=local --restart unless-stopped menofdocker/pcria
+$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 33066:3306 -v /mnt/storage1/db-data/mysql:/var/lib/mysql --add-host=host.docker.internal:host-gateway --restart unless-stopped menofdocker/mysql
+```
 
 ### docker 의 mysql
 
