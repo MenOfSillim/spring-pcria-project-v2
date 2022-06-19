@@ -84,3 +84,19 @@ Heroku 는 30분 내에 트래픽이 발생하지 않으면 sleep 모드로 들�
 
 > mysql & pcria 를 도커 컨테이너로 띄운 뒤 연동 성공 <br>
 > mysql 정보를 로컬과 동기화 시키는 작업 성공
+
+
+# 홈서버
+
+## 도커
+
+> docker run --name pcria -p 30001:8080 -d --add-host=host.docker.internal:host-gateway -e USE_PROFILE=local --restart unless-stopped menofdocker/pcria
+> docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 33066:3306 -v /mnt/storage1/db-data/mysql:/var/lib/mysql --add-host=host.docker.internal:host-gateway --restart unless-stopped menofdocker/mysql
+
+### docker 의 mysql
+
+- 접근방법
+![](image/image1.png)
+- docker 실행시 작성했던 port 번호를 입력한다.
+![](image/image2.png)
+- SSH/SSL 에서 본인의 키를 넣어 홈서버로 접근한다.

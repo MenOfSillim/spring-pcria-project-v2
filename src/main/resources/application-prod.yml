@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/pcria?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://host.docker.internal:33066/pcria?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
